@@ -1,4 +1,4 @@
-package io.murad.linear;
+package io.murad.linearsearch;
 
 public class LinearSearch {
 
