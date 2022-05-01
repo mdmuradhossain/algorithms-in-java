@@ -31,3 +31,39 @@ Let x = 4 be the element to be searched.
 ![mid element Binary Search](https://cdn.programiz.com/sites/tutorial2program/files/binary-search-mid-again.png)
 8. `x = 4` is found.
 ![Found](https://cdn.programiz.com/sites/tutorial2program/files/binary-search-found.png)
+
+### Time Complexities of the Binary Search Algorithm
+
+Suppose T(N) is the time complexity of the binary search for a set of N elements. Then,
+
+`T(N) = T(N/2) + O(1)` (By means of the recurrence relation) - (i)
+
+Now, applying Masters Theorem for computing run time complexity of recurrence relations i.e.
+
+`T(N) = aT(N/b) + f(N) - (ii)`
+
+Comparing equation (ii) with (i), we get,
+
+a = 1, b = 2
+
+Hence, log (a base b) = 1 = c - (iii)
+
+`Now, f(N) = n^c log^k(n) //k = 0 - (iv)`
+
+Using (iii) and (iv) in equation (ii), we get,
+
+`T(N) = O(N^c log^(k+1)N) = O(log(N)) - (v)`
+
+This is the worst-case time complexity for binary search. Now, the best case in which the only comparison is made. Therefore, N = 1. So, we get,
+
+`O(log(1)) = O(1) (as log(1) = 1)`
+
+Therefore, time complexities for Binary Search in different cases are:
+
+**Best Case**  
+
+`O(1)`
+
+**Worst Case**
+
+`O(log n)`
