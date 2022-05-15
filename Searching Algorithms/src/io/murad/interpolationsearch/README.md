@@ -32,8 +32,11 @@ Step 4: Repeat until a match is found or the search space reduces to zero.
 ## Time Complexity
 
 **Worst case time complexity:** `O(N)`
+
 **Average case time complexity:** `O(log log N)`
+
 **Best case time complexity:** `O(1)`
+
 **Space complexity:** `O(1)`
 
 On assuming a uniform distribution of the data on the linear scale used for interpolation, the performance can be shown to be `O(log log n)`.
