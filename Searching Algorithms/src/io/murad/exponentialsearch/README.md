@@ -82,3 +82,10 @@ binarySearch(Array, i/2, min(i, n-1), key)
 
    ` = 9`
 `Array[9]=19`, which is the required element.
+
+## Time Complexity
+
+- **Worst case time complexity:** `O(log i)` where i is the index of the element being searched.
+- **Average case time complexity:** `O(log i)`
+- **Best case time complexity:** `O(1)`
+- **Space complexity:** `O(1)`
