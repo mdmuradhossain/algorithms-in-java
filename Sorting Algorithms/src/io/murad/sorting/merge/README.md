@@ -193,3 +193,25 @@ Copy remaining elements of second array to main subarray
 This step would have been needed if the size of M was greater than L.
 
 At the end of the merge function, the subarray A[p..r] is sorted.
+
+Merge Sort Complexity
+Time Complexity	 
+Best	O(n*log n)
+Worst	O(n*log n)
+Average	O(n*log n)
+Space Complexity	O(n)
+Stability	Yes
+Time Complexity
+Best Case Complexity: O(n*log n)
+
+Worst Case Complexity: O(n*log n)
+
+Average Case Complexity: O(n*log n)
+
+Space Complexity
+The space complexity of merge sort is O(n).
+
+Merge Sort Applications
+Inversion count problem
+External sorting
+E-commerce applications
