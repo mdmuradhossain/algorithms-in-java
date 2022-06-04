@@ -17,86 +17,86 @@ While dividing the array, the pivot element should be positioned in such a way t
 **2. Rearrange the Array: **
 Now the elements of the array are rearranged so that elements that are smaller than the pivot are put on the left and the elements greater than the pivot are put on the right.
 ![Put all the smaller elements on the left and greater on the right of pivot element](https://cdn.programiz.com/cdn/farfuture/1Xn_e4xeHQjOsXExVhTgVbggPgpMk9WV4Z8gxmZgdyg/mtime:1582112622/sites/tutorial2program/files/quick-sort-0.2_0.png)
-
 Here's how we rearrange the array:
+1. A pointer is fixed at the pivot element. The pivot element is compared with the elements beginning from the first index.
+![Comparison of pivot element with element beginning from the first index](https://cdn.programiz.com/cdn/farfuture/zaN86RZ0WfV0PhWpWDhis-f9lWlfgKJt_liYoGjZAIk/mtime:1617189498/sites/tutorial2program/files/quick-sort-partition-first-step.png)
+2. If the element is greater than the pivot element, a second pointer is set for that element.
+![If the element is greater than the pivot element, a second pointer is set for that element.](https://cdn.programiz.com/cdn/farfuture/RzFeResnC88JRu9IFh2YqUKZMXltQ51EeiioINCMcEA/mtime:1617189487/sites/tutorial2program/files/quick-sort-partition-second-step.png)
+3. Now, pivot is compared with other elements. If an element smaller than the pivot element is reached, the smaller element is swapped with the greater element found earlier.
+![Pivot is compared with other elements.](https://cdn.programiz.com/cdn/farfuture/QA-TsXFkcz3cNyJikcbIWxepFVDu8ntl220KzlG8zdw/mtime:1617189492/sites/tutorial2program/files/quick-sort-partition-third-step.png)
+4. Again, the process is repeated to set the next greater element as the second pointer. And, swap it with another smaller element.
+![The process is repeated to set the next greater element as the second pointer.](https://cdn.programiz.com/cdn/farfuture/tMmdAbX5gev9K20XI1kzQ3n932vSjnN1MszZouHV7Yc/mtime:1617189469/sites/tutorial2program/files/quick-sort-partition-fourth-step.png)
+5. The process goes on until the second last element is reached.
+![The process goes on until the second last element is reached.](https://cdn.programiz.com/cdn/farfuture/MNYV977xf4N3cgCpAtkB1KDyPqyG9OvlKSkHSdd0kys/mtime:1617189475/sites/tutorial2program/files/quick-sort-partition-fifth-step.png)
+6. Finally, the pivot element is swapped with the second pointer.
+![Finally, the pivot element is swapped with the second pointer.](https://cdn.programiz.com/cdn/farfuture/lAMcHRRzL8TJEh7bjY3rAufTTy3y5-o4Nt0z5L1AB8A/mtime:1617189481/sites/tutorial2program/files/quick-sort-partition-sixth-step.png)
 
-A pointer is fixed at the pivot element. The pivot element is compared with the elements beginning from the first index.
-Quick Sort Steps
-Comparison of pivot element with element beginning from the first index
-If the element is greater than the pivot element, a second pointer is set for that element.
-Quick Sort Steps
-If the element is greater than the pivot element, a second pointer is set for that element.
-Now, pivot is compared with other elements. If an element smaller than the pivot element is reached, the smaller element is swapped with the greater element found earlier.
-Quick Sort Steps
-Pivot is compared with other elements.
-Again, the process is repeated to set the next greater element as the second pointer. And, swap it with another smaller element.
-Quick Sort Steps
-The process is repeated to set the next greater element as the second pointer.
-The process goes on until the second last element is reached.
-Quick Sort Steps
-The process goes on until the second last element is reached.
-Finally, the pivot element is swapped with the second pointer.
-Quick Sort Steps
-Finally, the pivot element is swapped with the second pointer.
-3. Divide Subarrays
+**3. Divide Subarrays**
 
 Pivot elements are again chosen for the left and the right sub-parts separately. And, step 2 is repeated.
 
-Quick Sort Steps
-Select pivot element of in each half and put at correct place using recursion
+![Select pivot element of in each half and put at correct place using recursion](https://cdn.programiz.com/cdn/farfuture/dK3pGyiHqFZOYklwABPBZ4zq_VZU1dMWBIbWhHJ-Rgw/mtime:1617189464/sites/tutorial2program/files/quick-sort_1.png)
  
-
 The subarrays are divided until each subarray is formed of a single element. At this point, the array is already sorted.
 
-Quick Sort Algorithm
+## Quick Sort Algorithm
 
-quickSort(array, leftmostIndex, rightmostIndex)
-  if (leftmostIndex < rightmostIndex)
-    pivotIndex <- partition(array,leftmostIndex, rightmostIndex)
-    quickSort(array, leftmostIndex, pivotIndex - 1)
-    quickSort(array, pivotIndex, rightmostIndex)
+`quickSort(array, leftmostIndex, rightmostIndex)`
+  `if (leftmostIndex < rightmostIndex)`
+    `pivotIndex <- partition(array,leftmostIndex, rightmostIndex)`
+    `quickSort(array, leftmostIndex, pivotIndex - 1)`
+    `quickSort(array, pivotIndex, rightmostIndex)`
 
-partition(array, leftmostIndex, rightmostIndex)
-  set rightmostIndex as pivotIndex
-  storeIndex <- leftmostIndex - 1
-  for i <- leftmostIndex + 1 to rightmostIndex
-  if element[i] < pivotElement
-    swap element[i] and element[storeIndex]
-    storeIndex++
-  swap pivotElement and element[storeIndex+1]
-return storeIndex + 1
-Visual Illustration of Quicksort Algorithm
-You can understand the working of quicksort algorithm with the help of the illustrations below.
+`partition(array, leftmostIndex, rightmostIndex)`
+  `set rightmostIndex as pivotIndex`
+  `storeIndex <- leftmostIndex - 1`
+  `for i <- leftmostIndex + 1 to rightmostIndex`
+  `if element[i] < pivotElement`
+   ` swap element[i] and element[storeIndex]`
+    `storeIndex++`
+  `swap pivotElement and element[storeIndex+1]`
+`return storeIndex + 1`
 
-Quick Sort Steps
-Sorting the elements on the left of pivot using recursion
-Quick Sort Steps
-Sorting the elements on the right of pivot using recursion
 
-Quicksort Complexity
+## Visual Illustration of Quicksort Algorithm
+
+![Sorting the elements on the left of pivot using recursion](https://cdn.programiz.com/cdn/farfuture/FxRG-2wIayocfWeQvHxMmUQTKhibQiI2FLqjkIr3Vi4/mtime:1608894915/sites/tutorial2program/files/quick-sort-working.png)
+
+![Sorting the elements on the right of pivot using recursion](https://cdn.programiz.com/cdn/farfuture/0k2dzQ8-WHeClPRTiv9CEdX1KkqBMpS_0St0lzT9RO8/mtime:1582112622/sites/tutorial2program/files/quick-sort-1.png)
+
+## Quicksort Complexity
 Time Complexity	 
-Best	O(n*log n)
-Worst	O(n2)
-Average	O(n*log n)
-Space Complexity	O(log n)
-Stability	No
-1. Time Complexities
-Worst Case Complexity [Big-O]: O(n2)
+| Best   |	O(n*log n)  |
+|------- | -------------|
+| Worst  |	O(n2)       |
+| Average|	O(n*log n)  |
+|Space Complexity|	O(log n)|
+|Stability|	No |
+
+**1. Time Complexities**
+**Worst Case Complexity [Big-O]:** `O(n2)`
+
 It occurs when the pivot element picked is either the greatest or the smallest element.
 
 This condition leads to the case in which the pivot element lies in an extreme end of the sorted array. One sub-array is always empty and another sub-array contains n - 1 elements. Thus, quicksort is called only on this sub-array.
 
 However, the quicksort algorithm has better performance for scattered pivots.
-Best Case Complexity [Big-omega]: O(n*log n)
-It occurs when the pivot element is always the middle element or near to the middle element.
-Average Case Complexity [Big-theta]: O(n*log n)
-It occurs when the above conditions do not occur.
-2. Space Complexity
-The space complexity for quicksort is O(log n).
 
-Quicksort Applications
+**Best Case Complexity [Big-omega]:** `O(n*log n)`
+
+It occurs when the pivot element is always the middle element or near to the middle element.
+
+**Average Case Complexity [Big-theta]:** `O(n*log n)`
+
+It occurs when the above conditions do not occur.
+
+**2. Space Complexity**
+
+The space complexity for quicksort is `O(log n)`.
+
+## Quicksort Applications
 Quicksort algorithm is used when
 
-the programming language is good for recursion
-time complexity matters
-space complexity matters
+- the programming language is good for recursion
+- time complexity matters
+- space complexity matters
