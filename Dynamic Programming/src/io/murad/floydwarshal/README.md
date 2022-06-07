@@ -1,5 +1,4 @@
 # Floyd-Warshall Algorithm
-In this tutorial, you will learn how floyd-warshall algorithm works. Also, you will find working examples of floyd-warshall algorithm in C, C++, Java and Python.
 
 Floyd-Warshall Algorithm is an algorithm for finding the shortest path between all the pairs of vertices in a weighted graph. This algorithm works for both the directed and undirected weighted graphs. But, it does not work for the graphs with negative cycles (where the sum of the edges in a cycle is negative).
 
