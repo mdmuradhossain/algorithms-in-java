@@ -2,17 +2,16 @@
 
 Floyd-Warshall Algorithm is an algorithm for finding the shortest path between all the pairs of vertices in a weighted graph. This algorithm works for both the directed and undirected weighted graphs. But, it does not work for the graphs with negative cycles (where the sum of the edges in a cycle is negative).
 
-A weighted graph is a graph in which each edge has a numerical value associated with it.
+>A weighted graph is a graph in which each edge has a numerical value associated with it.
 
 Floyd-Warhshall algorithm is also called as Floyd's algorithm, Roy-Floyd algorithm, Roy-Warshall algorithm, or WFI algorithm.
 
 This algorithm follows the dynamic programming approach to find the shortest paths.
 
-How Floyd-Warshall Algorithm Works?
+## How Floyd-Warshall Algorithm Works?
 Let the given graph be:
+![Initial graph](https://cdn.programiz.com/sites/tutorial2program/files/fw-Graph.png)
 
-graph
-Initial graph
 Follow the steps below to find the shortest path between all the pairs of vertices.
 
 Create a matrix A0 of dimension n*n where n is the number of vertices. The row and the column are indexed as i and j respectively. i and j are the vertices of the graph.
