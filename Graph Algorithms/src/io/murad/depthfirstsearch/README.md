@@ -54,3 +54,14 @@ init() {
      For each u ∈ G
        DFS(G, u)
 }
+
+Complexity of Depth First Search
+The time complexity of the DFS algorithm is represented in the form of O(V + E), where V is the number of nodes and E is the number of edges.
+
+The space complexity of the algorithm is O(V).
+
+Application of DFS Algorithm
+For finding the path
+To test if the graph is bipartite
+For finding the strongly connected components of a graph
+For detecting cycles in a graph
