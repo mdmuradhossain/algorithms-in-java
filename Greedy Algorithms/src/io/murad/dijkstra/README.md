@@ -55,3 +55,16 @@ function dijkstra(G, S)
                 distance[V] <- tempDistance
                 previous[V] <- U
     return distance[], previous[]
+    
+Dijkstra's Algorithm Complexity
+Time Complexity: O(E Log V)
+
+where, E is the number of edges and V is the number of vertices.
+
+Space Complexity: O(V)
+
+Dijkstra's Algorithm Applications
+To find the shortest path
+In social networking applications
+In a telephone network
+To find the locations in the map
