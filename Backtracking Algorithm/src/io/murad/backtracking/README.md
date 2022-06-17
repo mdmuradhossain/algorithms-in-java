@@ -1,5 +1,4 @@
-Backtracking Algorithm
-In this tutorial, you will learn what a backtracking algorithm is. Also, you will find an example of a backtracking approach.
+# Backtracking Algorithm
 
 A backtracking algorithm is a problem-solving algorithm that uses a brute force approach for finding the desired output.
 
