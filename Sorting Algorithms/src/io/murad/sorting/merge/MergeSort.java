@@ -35,7 +35,7 @@ public class MergeSort {
 			}
 			k++;
 		}
-
+	
 		// When we run out of elements in either L or M,
 		// pick up the remaining elements and put in A[p..r]
 		while (i < n1) {
@@ -49,8 +49,8 @@ public class MergeSort {
 			j++;
 			k++;
 		}
+	
 	}
-
 	// Divide the array into two subarrays, sort them and merge them
 	public void mergeSort(int arr[], int l, int r) {
 		if (l < r) {
