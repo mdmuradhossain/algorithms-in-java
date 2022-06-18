@@ -58,20 +58,20 @@ In the above dynamic algorithm, the results obtained from each comparison betwee
 So, the time taken by a dynamic approach is the time taken to fill the table (ie. O(mn)). Whereas, the recursion algorithm has the complexity of `2max(m, n)`.
 
 ## Longest Common Subsequence Algorithm
-X and Y be two given sequences
-Initialize a table LCS of dimension X.length * Y.length
-X.label = X
-Y.label = Y
-LCS[0][] = 0
-LCS[][0] = 0
-Start from LCS[1][1]
-Compare X[i] and Y[j]
-    If X[i] = Y[j]
-        LCS[i][j] = 1 + LCS[i-1, j-1]   
-        Point an arrow to LCS[i][j]
-    Else
-        LCS[i][j] = max(LCS[i-1][j], LCS[i][j-1])
-        Point an arrow to max(LCS[i-1][j], LCS[i][j-1])
+`X and Y be two given sequences`
+`Initialize a table LCS of dimension X.length * Y.length`
+`X.label = X`
+`Y.label = Y`
+`LCS[0][] = 0`
+`LCS[][0] = 0`
+`Start from LCS[1][1]`
+`Compare X[i] and Y[j]`
+    `If X[i] = Y[j]`
+    `    LCS[i][j] = 1 + LCS[i-1, j-1]  ` 
+      `  Point an arrow to LCS[i][j]`
+   ` Else`
+      `  LCS[i][j] = max(LCS[i-1][j], LCS[i][j-1])`
+        `Point an arrow to max(LCS[i-1][j], LCS[i][j-1])`
         
 ### Longest Common Subsequence Applications
 - in compressing genome resequencing data
