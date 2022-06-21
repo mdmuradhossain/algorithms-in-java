@@ -34,7 +34,7 @@ It is easier to start with an example and then think about the algorithm.
 
 ![Repeat until all the vertices have been visited](https://cdn.programiz.com/sites/tutorial2program/files/dj-8.png)
 
-## kstra's algorithm pseudocode
+## Dijkstra's algorithm pseudocode
 
 We need to maintain the path distance of every vertex. We can store that in an array of size v, where v is the number of vertices.
 
@@ -60,12 +60,12 @@ function dijkstra(G, S)
                 previous[V] <- U
     return distance[], previous[]
     
-## kstra's Algorithm Complexity
-Time Complexity: `(E Log V)`
+## Dijkstra's Algorithm Complexity
+Time Complexity: `O(E Log V)`
 
 where, E is the number of edges and V is the number of vertices.
 
-Space Complexity: `(V)`
+Space Complexity: `O(V)`
 
 ## Dijkstra's Algorithm Applications
 -  find the shortest path
