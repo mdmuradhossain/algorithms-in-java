@@ -1,22 +1,26 @@
 # Knapsack Problem
+
 A slightly more interesting and relatable phrasing of the 0–1 knapsack problem is:
 
 Consider a thief gets into a home to rob and he carries a knapsack. There are fixed number of items in the home — each with its own weight and value — Jewelry, with less weight and highest value vs tables, with less value but a lot heavy. To add fuel to the fire, the thief has an old knapsack which has limited capacity. Obviously, he can’t split the table into half or jewelry into 3/4ths. He either takes it or leaves it. Source
 
 Unfortunately, I had some difficulty understanding some parts of the Hackerearth article, which is why I decided to write my own article. This article will be largely based off Hackerearth’s article and code snippets are written in Java. I’ll be tacking on additional explanations and elaborations where I feel they are necessary.
 
-Dynamic programming
+## Dynamic programming
+
 We’ll be solving this problem with dynamic programming. Dynamic programming requires an optimal substructure and overlapping sub-problems, both of which are present in the 0–1 knapsack problem, as we shall see.
 
 It’s fine if you don’t understand what “optimal substructure” and “overlapping sub-problems” are (that’s an article for another day). Essentially, it just means a particular flavor of problems that allow us to reuse previous solutions to smaller problems in order to calculate a solution to the current problem. You’ll see what I mean in a bit.
 
-Problem details
+## Problem details
+
 Suppose we have a knapsack which can hold int w = 10 weight units. We have a total of int n = 4 items to choose from, whose values are represented by an array int[] val = {10, 40, 30, 50} and weights represented by an array int[] wt = {5, 4, 6, 3}.
 
 Since this is the 0–1 knapsack problem, we can either include an item in our knapsack or exclude it, but not include a fraction of it, or include it multiple times.
 
-Solution
-Step 1:
+## Solution
+
+### Step 1:
 First, we create a 2-dimensional array (i.e. a table) of n + 1 rows and w + 1 columns.
 
 A row number i represents the set of all the items from rows 1— i. For instance, the values in row 3 assumes that we only have items 1, 2, and 3.
@@ -25,15 +29,23 @@ A column number j represents the weight capacity of our knapsack. Therefore, the
 
 Putting everything together, an entry in row i, column j represents the maximum value that can be obtained with items 1, 2, 3 … i, in a knapsack that can hold j weight units.
 
-Let’s call our table mat for matrix. Therefore, int[][] mat = new int[n + 1][w + 1].
+Let’s call our table mat for matrix. Therefore, `int[][] mat = new int[n + 1][w + 1]`.
 
-Step 2:
+### Step 2:
 We can immediately begin filling some entries in our table: the base cases, for which the solution is trivial. For instance, at row 0, when we have no items to pick from, the maximum value that can be stored in any knapsack must be 0. Similarly, at column 0, for a knapsack which can hold 0 weight units, the maximum value that can be stored in it is 0. (We’re assuming that there are no massless, valuable items.)
 
 We can do this with 2 for loops:
 
+// Populate base cases
+`int[][] mat = new int[n + 1][w + 1];`
+`for (int r = 0; r < w + 1; r++) {`
+    `mat[0][r] = 0;`
+`}`
+`for (int c = 0; c < n + 1; c++) {`
+    `mat[c][0] = 0;`
+`}`
 
-Step 3 (the crux of the problem):
+### Step 3 (the crux of the problem):
 Now, we want to begin populating our table. As with all dynamic programming solutions, at each step, we will make use of our solutions to previous sub-problems.
 
 I’ll first describe the logic, before showing a concrete example.
@@ -52,6 +64,7 @@ Therefore, at row i and column j (which represents the maximum value we can obta
 
 Here’s a concrete example of what I mean.
 
+![example](https://miro.medium.com/max/1400/1*51MVzz--nIWXhnVHrrDTSg.png)
 
 At row 3 (item 2), and column 5 (knapsack capacity of 4), we can choose to either include item 2 (which weighs 4 units) or not. If we choose not to include it, the maximum value we can obtain is the same as if we only have item 1 to choose from (which is found in the row above, i.e. 0). If we want to include item 2, the maximum value we can obtain with item 2 is the value of item 2 (40) + the maximum value we can obtain with the remaining capacity (which is 0, because the knapsack is completely full already).
 
@@ -61,12 +74,69 @@ We pick the larger of 50 vs 10, and so the maximum value we can obtain with item
 
 The algorithm can be expressed in Java like this:
 
+// Main logic
+`for (int item = 1; item <= n; item++) {`
+    `for (int capacity = 1; capacity <= w; capacity++) {`
+       ` int maxValWithoutCurr = mat[item - 1][capacity]; // This is guaranteed to exist`
+        `int maxValWithCurr = 0; // We initialize this value to 0`
 
-Step 4 (final solution):
+        int weightOfCurr = wt[item - 1]; // We use item -1 to account for the extra row at the top
+        if (capacity >= weightOfCurr) { // We check if the knapsack can fit the current item
+            maxValWithCurr = val[item - 1]; // If so, maxValWithCurr is at least the value of the current item
+
+            int remainingCapacity = capacity - weightOfCurr; // remainingCapacity must be at least 0
+            maxValWithCurr += mat[item - 1][remainingCapacity]; // Add the maximum value obtainable with the remaining capacity
+        }
+
+        mat[item][capacity] = Math.max(maxValWithoutCurr, maxValWithCurr); // Pick the larger of the two
+    }
+}
+
+### Step 4 (final solution):
 Once the table has been populated, the final solution can be found at the last row in the last column, which represents the maximum value obtainable with all the items and the full capacity of the knapsack.
 
-return mat[n][w];
+return `mat[n][w]`;
 
-Working code:
+**Working code:**
 Note: here, I printed the final answer instead of returning it, since everything is housed under public static void main.
 
+`import java.util.Arrays;`
+
+`public class Knapsack {`
+    `public static void main(String args[]) {`
+       ` int w = 10;`
+        `int n = 4;`
+       ` int[] val = {10, 40, 30, 50};`
+       ` int[] wt = {5, 4, 6, 3};`
+
+        // Populate base cases
+        int[][] mat = new int[n + 1][w + 1];
+        for (int r = 0; r < w + 1; r++) {
+            mat[0][r] = 0;
+        }
+        for (int c = 0; c < n + 1; c++) {
+            mat[c][0] = 0;
+        }
+        
+        // Main logic
+        for (int item = 1; item <= n; item++) {
+            for (int capacity = 1; capacity <= w; capacity++) {
+                int maxValWithoutCurr = mat[item - 1][capacity]; // This is guaranteed to exist
+                int maxValWithCurr = 0; // We initialize this value to 0
+                
+                int weightOfCurr = wt[item - 1]; // We use item -1 to account for the extra row at the top
+                if (capacity >= weightOfCurr) { // We check if the knapsack can fit the current item
+                    maxValWithCurr = val[item - 1]; // If so, maxValWithCurr is at least the value of the current item
+                    
+                    int remainingCapacity = capacity - weightOfCurr; // remainingCapacity must be at least 0
+                    maxValWithCurr += mat[item - 1][remainingCapacity]; // Add the maximum value obtainable with the remaining capacity
+                }
+                
+                mat[item][capacity] = Math.max(maxValWithoutCurr, maxValWithCurr); // Pick the larger of the two
+            }
+        }
+        
+        System.out.println(mat[n][w]); // Final answer
+        System.out.println(Arrays.deepToString(mat)); // Visualization of the table
+    }
+}
