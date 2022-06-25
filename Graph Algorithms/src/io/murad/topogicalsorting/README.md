@@ -1,20 +1,22 @@
 hackerearth
+# Topological Sort
+
 Topological sorting of vertices of a Directed Acyclic Graph is an ordering of the vertices  in such a way, that if there is an edge directed towards vertex  from vertex , then  comes before . For example consider the graph given below:
 
-enter image description here
+![enter image description here](https://he-s3.s3.amazonaws.com/media/uploads/d6be27e.png)
 
-A topological sorting of this graph is:     
-There are multiple topological sorting possible for a graph. For the graph given above one another topological sorting is:     
+A topological sorting of this graph is: **1 2 3 4 5** 
+There are multiple topological sorting possible for a graph. For the graph given above one another topological sorting is: **1 2 3 4 5**   
 In order to have a topological sorting the graph must not contain any cycles. In order to prove it, let's assume there is a cycle made of the vertices . That means there is a directed edge between  and   and between  and . So now, if we do topological sorting then  must come before  because of the directed edge from  to . Clearly,  will come after , because of the directed from  to , that means  must come before . Well, clearly we've reached a contradiction, here. So topological sorting can be achieved for only directed and acyclic graphs.
 
 Le'ts see how we can find a topological sorting in a graph. So basically we want to find a permutation of the vertices in which for every vertex , all the vertices  having edges coming out and directed towards  comes before . We'll maintain an array  that will denote our topological sorting. So, let's say for a graph having  vertices, we have an array  of size  whose  element tells the number of vertices which are not already inserted in  and there is an edge from them incident on vertex numbered . We'll append vertices  to the array , and when we do that we'll decrease the value of  by  for every edge from  to . Doing this will mean that we have inserted one vertex having edge directed towards . So at any point we can insert only those vertices for which the value of  is .
 The algorithm using a BFS traversal is given below:
-topological_sort(N, adj[N][N])
-        T = []
-        visited = []
-        in_degree = []
-        for i = 0 to N
-                in_degree[i] = visited[i] = 0
+`topological_sort(N, adj[N][N])`
+      `  T = []`
+      `  visited = []`
+        `in_degree = []`
+       ` for i = 0 to N`
+               ` in_degree[i] = visited[i] = 0`
 
         for i = 0 to N
                 for j = 0 to N
