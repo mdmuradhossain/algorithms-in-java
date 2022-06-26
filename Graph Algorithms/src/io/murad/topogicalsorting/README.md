@@ -1,4 +1,3 @@
-hackerearth
 # Topological Sort
 
 Topological sorting of vertices of a Directed Acyclic Graph is an ordering of the vertices  in such a way, that if there is an edge directed towards vertex  from vertex , then  comes before . For example consider the graph given below:
@@ -40,56 +39,72 @@ The algorithm using a BFS traversal is given below:
                                         visited[j] = TRUE
         return T
 Let's take a graph and see the algorithm in action. Consider the graph given below:
-enter image description here
 
-Initially  and  is empty
-enter image description here
+![](https://he-s3.s3.amazonaws.com/media/uploads/0c3320c.png)
+Initially in_degree[0] = 0 and T is empty
 
-So, we delete  from  and append it to . The vertices directly connected to  are  and  so we decrease their  by . So, now  and so  is pushed in .
+![Queue: 0](https://he-s3.s3.amazonaws.com/media/uploads/401c3c4.png)
 
-enter image description here
+So, we delete 0 from  Queue and append it to T. The vertices directly connected to  0 are 1 and  2 so we decrease their in_degree by 1. So, now  in_degree[1] = 0 and so 1 is pushed in Queue.
 
-Next we delete  from  and append it to . Doing this we decrease  by , and now it becomes  and  is pushed into .
+![Queue: 1](https://he-s3.s3.amazonaws.com/media/uploads/4aed1a4.png)
 
-enter image description here
+Next we delete 1 from  and append it to T. Doing this we decrease in_degree[2] by 1, and now it becomes 0 and 1 is pushed into Queue.
+
+![Queue: 2](https://he-s3.s3.amazonaws.com/media/uploads/54d23c8.png)
 
 So, we continue doing like this, and further iterations looks like as follows:
 
-enter image description here
-So at last we get our Topological sorting in  i.e. : , , , , , 
+![Queue: 3](https://he-s3.s3.amazonaws.com/media/uploads/ccb8663.png)
+
+![Queue: 4](https://he-s3.s3.amazonaws.com/media/uploads/ccb8663.png)
+
+![Queue: 5](https://he-s3.s3.amazonaws.com/media/uploads/ccb8663.png)
+
+![Queue: --](https://he-s3.s3.amazonaws.com/media/uploads/ccb8663.png)
+
+So at last we get our Topological sorting in T i.e. : 0, 1, 2, 3, 4,5 
 Solution using a DFS traversal, unlike the one using BFS, does not need any special  array. Following is the pseudo code of the DFS solution:
 
-T = []
-visited = []
+`T = []`
+`visited = []`
 
-topological_sort( cur_vert, N, adj[][] ){
-    visited[cur_vert] = true
-    for i = 0 to N
-        if adj[cur_vert][i] is true and visited[i] is false
-        topological_sort(i)
-    T.insert_in_beginning(cur_vert)
-}
+`topological_sort( cur_vert, N, adj[][] ){`
+  `  visited[cur_vert] = true`
+  `  for i = 0 to N`
+       ` if adj[cur_vert][i] is true and visited[i] is false`
+        `topological_sort(i)`
+   ` T.insert_in_beginning(cur_vert)`
+`}`
+
 The following image of shows the state of stack and of array  in the above code for the same graph shown above.
-enter image description here
+![](https://he-s3.s3.amazonaws.com/media/uploads/d43fba2.png)
 
-Time and Space Complexity
+## Time and Space Complexity
+
 Breaking the algorithm into chunks, we:
 
-Determine the indegree for each node. This is O(M)O(M) time (where MM is the number of edges), since this involves looking at each directed edge in the graph once.
-Find nodes with no incoming edges. This is a simple loop through all the nodes with some number of constant-time appends. O(N)O(N) time (where NN is the number of nodes).
+Determine the indegree for each node. This is `O(M)O(M)` time (where MM is the number of edges), since this involves looking at each directed edge in the graph once.
+
+Find nodes with no incoming edges. This is a simple loop through all the nodes with some number of constant-time appends. `O(N)O(N)` time (where NN is the number of nodes).
+
 Add nodes until we run out of nodes with no incoming edges. This loop could run once for every node—O(N)O(N) times. In the body, we:
 Do two constant-time operations on an array to add a node to the topological ordering.
-Decrement the indegree for each neighbor of the node we added. Over the entire algorithm, we'll end up doing exactly one decrement for each edge, making this step O(M)O(M) time overall.
-Check if we included all nodes or found a cycle. This is a fast O(1)O(1) comparison.
-All together, the time complexity is O(M+N)O(M+N).
+
+Decrement the indegree for each neighbor of the node we added. Over the entire algorithm, we'll end up doing exactly one decrement for each edge, making this step `O(M)O(M)` time overall.
+
+Check if we included all nodes or found a cycle. This is a fast `O(1)O(1)` comparison.
+All together, the time complexity is `O(M+N)O(M+N)`.
 
 That's the fastest time we can expect, since we'll have to look at all the nodes and edges at least once.
 
 What about space complexity? Here are the data structures we created:
 
-indegrees—this has one entry for each node in the graph, so it's O(N)O(N) space.
-nodesWithNoIncomingEdges—in a graph with no edges, this would start out containing every node, so it's O(N)O(N) space in the worst case.
-topologicalOrdering—in a graph with no cycles, this will eventually have every node. O(N)O(N) space.
-All in all, we have three structures and they're all O(N)O(N) space. Overall space complexity: O(N)O(N).
+indegrees—this has one entry for each node in the graph, so it's `O(N)O(N)` space.
 
-This is the best space complexity we can expect, since we must allocate a return array which costs O(N)O(N) space itself.
+nodesWithNoIncomingEdges—in a graph with no edges, this would start out containing every node, so it's O(N)O(N) space in the worst case.
+topologicalOrdering—in a graph with no cycles, this will eventually have every node. `O(N)O(N)` space.
+
+All in all, we have three structures and they're all `O(N)O(N)` space. Overall space complexity: `O(N)O(N)`.
+
+This is the best space complexity we can expect, since we must allocate a return array which costs `O(N)O(N)` space itself.
