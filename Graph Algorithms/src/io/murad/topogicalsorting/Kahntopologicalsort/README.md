@@ -1,5 +1,5 @@
-techdelight
-Kahn’s Topological Sort Algorithm
+# Kahn’s Topological Sort Algorithm
+
 Given a directed acyclic graph (DAG), print it in Topological order using Kahn’s topological sort algorithm. If the DAG has more than one topological ordering, print any of them. If the graph is not DAG, report that as well.
 
 A Topological sort or Topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering. Topological order is possible if and only if the graph has no directed cycles, i.e. if the graph is DAG.
@@ -7,7 +7,7 @@ A Topological sort or Topological ordering of a directed graph is a linear order
  
 For example, consider the following graph:
 
-Kahn’s Topological Sort Algorithm
+![Kahn’s Topological Sort Algorithm](https://www.techiedelight.com/wp-content/uploads/Topological-sorting.png)
 
 The above graph has many valid topological ordering of vertices like,
 
@@ -21,10 +21,11 @@ The above graph has many valid topological ordering of vertices like,
 3   7   0   5   1   4   2   6
  
 … and many more
-Note that for every directed edge u —> v, u comes before v in the ordering. For example, the pictorial representation of the topological order [7, 5, 3, 1, 4, 2, 0, 6] is:
+
+Note that for every directed edge `u —> v, u` comes before v in the ordering. For example, the pictorial representation of the topological order `[7, 5, 3, 1, 4, 2, 0, 6]` is:
 
  
-Kahn’s Topological Sort Algorithm
+![Kahn’s Topological Sort Algorithm](https://www.techiedelight.com/wp-content/uploads/2016/11/Topological-order-1.png)
 
 Practice this problem
 
@@ -50,11 +51,16 @@ if graph has edges then
     return report “graph has at least one cycle”
 else
     return L “a topologically sorted order”
+    
 Note that a DAG has at least one such vertex which has no incoming edges.
 
 How can we remove an edge from the graph or check if a vertex has no other incoming edge in constant time?
 
-The idea is to maintain in-degree information of all graph vertices in a map or an array , say indegree[], for constant-time operations. Here, indegree[m] will store the total number of incoming edges to vertex m.
+The idea is to maintain in-degree information of all graph vertices in a map or an array , say `indegree[]`, for constant-time operations. Here, `indegree[m]` will store the total number of incoming edges to vertex `m`.
 
-If vertex m has no incoming edge and is ready to get processed, its indegree will be 0, i.e., indegree[m] = 0.
-To remove an edge from n to m from the graph, we decrement indegree[m] by 1.
+- If vertex m has no incoming edge and is ready to get processed, its indegree will be 0, i.e., `indegree[m] = 0`.
+- To remove an edge from n to m from the graph, we decrement `indegree[m]` by 1.
+
+## Time Complexity
+
+The time complexity of Kahn’s topological sort algorithm is O(V + E), where V and E are the total number of vertices and edges in the graph, respectively.
