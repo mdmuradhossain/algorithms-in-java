@@ -21,13 +21,13 @@ The mathematics to find the position of the element to be compared is calculated
 
 The steps involved in this algorithm are:
 
-Step 1: In a loop, calculate the value of pos using the above formula.
+- **Step 1:** In a loop, calculate the value of pos using the above formula.
 
-Step 2: If it is a match, return the index of the item, and exit.
+- **Step 2:** If it is a match, return the index of the item, and exit.
 
-Step 3: If the item is less than the element at position pos, calculate the target position of the left sub-array. Otherwise calculate the same in the right sub-array.
+- **Step 3:** If the item is less than the element at position pos, calculate the target position of the left sub-array. Otherwise calculate the same in the right sub-array.
 
-Step 4: Repeat until a match is found or the search space reduces to zero.
+- **Step 4:** Repeat until a match is found or the search space reduces to zero.
 
 ## Time Complexity
 
@@ -41,3 +41,6 @@ Step 4: Repeat until a match is found or the search space reduces to zero.
 
 On assuming a uniform distribution of the data on the linear scale used for interpolation, the performance can be shown to be `O(log log n)`.
 Dynamic Interpolation Search is possible in `o(log log n)` time using a novel data structure.
+
+## Applications
+A potential fast search algorithm to search within an uniformly distributed and sorted search space (like a phone book)
