@@ -27,16 +27,16 @@ Note that for every directed edge `u —> v, u` comes before v in the ordering. Fo
  
 ![Kahn’s Topological Sort Algorithm](https://www.techiedelight.com/wp-content/uploads/2016/11/Topological-order-1.png)
 
-Practice this problem
+## Practice this problem
 
 In the previous post, we have seen how to print the topological order of a graph using the Depth–first search (DFS) algorithm. In this post, Kahn’s topological sort algorithm is introduced, which provides an efficient way to print the topological order.
 
  
 Kahn’s topological sort algorithm works by finding vertices with no incoming edges and removing all outgoing edges from these vertices. Following is a pseudocode for Kahn’s topological sort algorithm taken from Wikipedia:
 
-Kahn’s–Algorithm (graph)
+### Kahn’s–Algorithm (graph)
  
-L —> An empty list that will contain the sorted elements
+`L —> An empty list that will contain the sorted elements
 S —> A set of all vertices with no incoming edges (i.e., having indegree 0)
  
 while S is non-empty do
@@ -51,10 +51,10 @@ if graph has edges then
     return report “graph has at least one cycle”
 else
     return L “a topologically sorted order”
-    
+`    
 Note that a DAG has at least one such vertex which has no incoming edges.
 
-How can we remove an edge from the graph or check if a vertex has no other incoming edge in constant time?
+### How can we remove an edge from the graph or check if a vertex has no other incoming edge in constant time?
 
 The idea is to maintain in-degree information of all graph vertices in a map or an array , say `indegree[]`, for constant-time operations. Here, `indegree[m]` will store the total number of incoming edges to vertex `m`.
 
